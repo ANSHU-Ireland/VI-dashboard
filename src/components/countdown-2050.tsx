@@ -45,24 +45,42 @@ export function Countdown2050({ target }: Countdown2050Props) {
       <div className="text-2xl font-mono">
         ⏳ Countdown to 2050:
       </div>
-      <div className="flex flex-wrap justify-center gap-4 text-lg">
+      <div className="flex flex-wrap justify-center gap-3 text-lg">
         <div className="bg-card border border-border rounded-xl px-4 py-2">
           <span className="font-mono font-bold text-2xl tabular-nums transition-all duration-300 ease-out">
             {timeLeft.years}
           </span>
-          <span className="text-slate ml-1">years</span>
+          <span className="text-slate ml-1 text-sm">years</span>
         </div>
         <div className="bg-card border border-border rounded-xl px-4 py-2">
           <span className="font-mono font-bold text-2xl tabular-nums transition-all duration-300 ease-out">
             {timeLeft.months}
           </span>
-          <span className="text-slate ml-1">months</span>
+          <span className="text-slate ml-1 text-sm">months</span>
         </div>
         <div className="bg-card border border-border rounded-xl px-4 py-2">
           <span className="font-mono font-bold text-2xl tabular-nums transition-all duration-300 ease-out">
             {timeLeft.days}
           </span>
-          <span className="text-slate ml-1">days</span>
+          <span className="text-slate ml-1 text-sm">days</span>
+        </div>
+        <div className="bg-card border border-border rounded-xl px-3 py-2">
+          <span className="font-mono font-bold text-xl tabular-nums transition-all duration-300 ease-out">
+            {timeLeft.hours}
+          </span>
+          <span className="text-slate ml-1 text-xs">hrs</span>
+        </div>
+        <div className="bg-card border border-border rounded-xl px-3 py-2">
+          <span className="font-mono font-bold text-xl tabular-nums transition-all duration-300 ease-out">
+            {timeLeft.minutes}
+          </span>
+          <span className="text-slate ml-1 text-xs">min</span>
+        </div>
+        <div className="bg-card border border-border rounded-xl px-3 py-2">
+          <span className="font-mono font-bold text-xl tabular-nums transition-all duration-300 ease-out animate-pulse">
+            {timeLeft.seconds.toString().padStart(2, '0')}
+          </span>
+          <span className="text-slate ml-1 text-xs">sec</span>
         </div>
       </div>
     </div>

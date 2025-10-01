@@ -1,0 +1,51 @@
+{
+  "sub_industry": "Coal & Consumable Fuels",
+  "dimensions": [
+    {
+      "name": "Infrastructure",
+      "score": 62,
+      "classification": "Low Viability",
+      "confidence": 0.70,
+      "assumptions": "Relies on policy proxies",
+      "known_bias": "Ignores informal coal",
+      "human_check": true,
+      "expert_check": true,
+      "rating": 4
+    },
+    {
+      "name": "Ecological",
+      "score": 85,
+      "classification": "Low Viability",
+      "confidence": 0.95,
+      "assumptions": "Uses emissions data",
+      "known_bias": "Historical data lag",
+      "human_check": true,
+      "expert_check": true,
+      "rating": 5
+    },
+    {
+      "name": "Economic",
+      "score": 74,
+      "classification": "Low Viability",
+      "confidence": 0.65,
+      "assumptions": "Market price volatility",
+      "known_bias": "Subsidies not fully captured",
+      "human_check": false,
+      "expert_check": true,
+      "rating": 3
+    },
+    {
+      "name": "Social",
+      "score": 58,
+      "classification": "Medium",
+      "confidence": 0.60,
+      "assumptions": "Employment impact focus",
+      "known_bias": "Regional variation",
+      "human_check": true,
+      "expert_check": false,
+      "rating": 3
+    }
+  ],
+  "composite_score": 68,
+  "classification": "Low Viability"
+}

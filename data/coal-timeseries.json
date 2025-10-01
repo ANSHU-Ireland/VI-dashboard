@@ -1,0 +1,9 @@
+{
+  "sub_industry": "Coal & Consumable Fuels",
+  "time_series": [
+    { "year": 2010, "score": 52 },
+    { "year": 2015, "score": 58 },
+    { "year": 2020, "score": 63 },
+    { "year": 2025, "score": 68 }
+  ]
+}

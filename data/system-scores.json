@@ -1,0 +1,56 @@
+{
+  "dimensions": [
+    {
+      "name": "Infrastructure",
+      "score": 58,
+      "classification": "Medium",
+      "coverage": 0.80,
+      "confidence": 0.72,
+      "human_check": true,
+      "expert_check": true,
+      "rating": 4
+    },
+    {
+      "name": "Ecological",
+      "score": 79,
+      "classification": "Low Viability",
+      "coverage": 0.90,
+      "confidence": 0.85,
+      "human_check": true,
+      "expert_check": false,
+      "rating": 5
+    },
+    {
+      "name": "Economic",
+      "score": 65,
+      "classification": "Low Viability",
+      "coverage": 0.75,
+      "confidence": 0.68,
+      "human_check": false,
+      "expert_check": true,
+      "rating": 3
+    },
+    {
+      "name": "Social",
+      "score": 52,
+      "classification": "Medium",
+      "coverage": 0.60,
+      "confidence": 0.55,
+      "human_check": true,
+      "expert_check": true,
+      "rating": 4
+    },
+    {
+      "name": "Technological",
+      "score": 45,
+      "classification": "Medium",
+      "coverage": 0.85,
+      "confidence": 0.78,
+      "human_check": false,
+      "expert_check": false,
+      "rating": 2
+    }
+  ],
+  "composite_global_score": 63,
+  "composite_classification": "Low Viability"
+}

@@ -1,0 +1,40 @@
+{
+  "sectors": [
+    {
+      "id": "energy",
+      "name": "Energy",
+      "score": 60,
+      "classification": "Medium"
+    },
+    {
+      "id": "textiles",
+      "name": "Textiles",
+      "score": 65,
+      "classification": "Low Viability"
+    },
+    {
+      "id": "healthcare",
+      "name": "Healthcare",
+      "score": 45,
+      "classification": "Medium"
+    },
+    {
+      "id": "financials",
+      "name": "Financials",
+      "score": 55,
+      "classification": "Medium"
+    },
+    {
+      "id": "technology",
+      "name": "Technology",
+      "score": 42,
+      "classification": "Medium"
+    },
+    {
+      "id": "agriculture",
+      "name": "Agriculture",
+      "score": 72,
+      "classification": "Low Viability"
+    }
+  ]
+}

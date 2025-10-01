@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #0F172A;
+  --bone: #F8FAFC;
+  --graphite: #111827;
+  --slate: #64748B;
+  --moss-600: #16A34A;
+  --amber-500: #F59E0B;
+  --crimson-600: #DC2626;
+  --cobalt-600: #2563EB;
+  --card: #FFFFFF;
+  --border: #E5E7EB;
+  --muted: #F1F5F9;
+}
+
+.dark {
+  --ink: #F8FAFC;
+  --bone: #111827;
+  --graphite: #0F172A;
+  --card: #0B1220;
+  --border: #1F2937;
+  --muted: #0F172A;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-bone text-ink font-sans;
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(15, 23, 42, 0.15) 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+  
+  .dark body {
+    @apply bg-graphite text-ink;
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(248, 250, 252, 0.05) 1px, transparent 0);
+  }
+}
+
+@layer components {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .focus-visible {
+    @apply outline-2 outline-offset-2 outline-cobalt-600;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

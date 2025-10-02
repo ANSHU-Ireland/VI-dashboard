@@ -120,10 +120,10 @@ export function SystemDashboard() {
                   <td className="py-3">80%</td>
                   <td className="py-3">0.72</td>
                   <td className="py-3">
-                    <VerifyBadges humanCheck={true} expertCheck={false} />
+                    <VerificationIndicator verified={true} type="human" />
                   </td>
                   <td className="py-3">
-                    <VerifyBadges humanCheck={false} expertCheck={true} />
+                    <VerificationIndicator verified={true} type="expert" />
                   </td>
                   <td className="py-3">
                     <RatingStars rating={4} />

@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { ProgressBarText } from "./progress-bar-text";
 import { ScorePill } from "./score-pill";
 import { RatingStars } from "./rating-stars";
-import { VerifyBadges } from "./verify-badges";
+import { VerifyBadges, VerificationIndicator } from "./verify-badges";
 import { TimeseriesChart } from "./timeseries-chart";
 import { 
   getSubIndustryProgress, 

@@ -24,18 +24,9 @@ export function SystemDashboard() {
         setProgress(progressData);
         setScores(scoresData);
         setSectors(sectorsData.sectors);
-        console.log("Sectors data loaded:", sectorsData.sectors); // Debug log
+        console.log("Sectors data loaded:", sectorsData.sectors);
       } catch (error) {
         console.error("Error fetching system dashboard data:", error);
-        // Set fallback sectors data if fetch fails
-        setSectors([
-          { id: "energy", name: "Energy", score: 60, classification: "Medium" },
-          { id: "textiles", name: "Textiles", score: 65, classification: "Low Viability" },
-          { id: "healthcare", name: "Healthcare", score: 45, classification: "Medium" },
-          { id: "financials", name: "Financials", score: 55, classification: "Medium" },
-          { id: "technology", name: "Technology", score: 42, classification: "Medium" },
-          { id: "agriculture", name: "Agriculture", score: 72, classification: "Low Viability" }
-        ]);
       } finally {
         setLoading(false);
       }

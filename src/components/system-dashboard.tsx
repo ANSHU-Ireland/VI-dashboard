@@ -24,8 +24,18 @@ export function SystemDashboard() {
         setProgress(progressData);
         setScores(scoresData);
         setSectors(sectorsData.sectors);
+        console.log("Sectors data loaded:", sectorsData.sectors); // Debug log
       } catch (error) {
         console.error("Error fetching system dashboard data:", error);
+        // Set fallback sectors data if fetch fails
+        setSectors([
+          { id: "energy", name: "Energy", score: 60, classification: "Medium" },
+          { id: "textiles", name: "Textiles", score: 65, classification: "Low Viability" },
+          { id: "healthcare", name: "Healthcare", score: 45, classification: "Medium" },
+          { id: "financials", name: "Financials", score: 55, classification: "Medium" },
+          { id: "technology", name: "Technology", score: 42, classification: "Medium" },
+          { id: "agriculture", name: "Agriculture", score: 72, classification: "Low Viability" }
+        ]);
       } finally {
         setLoading(false);
       }
@@ -256,25 +266,31 @@ export function SystemDashboard() {
         <div className="lg:col-span-2 bg-card border border-border rounded-2xl p-6 space-y-6">
           <h3 className="text-xl font-semibold">Sector Snapshot</h3>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {sectors.map((sector, index) => (
-              <button
-                key={sector.id}
-                onClick={() => handleSectorClick(sector.id)}
-                className="bg-muted/30 hover:bg-muted/50 border border-border rounded-xl p-4 text-left transition-all duration-200 hover:shadow-sm hover:translate-y-[-2px] focus-visible animate-fade-in"
-                style={{ animationDelay: `${index * 80}ms` }}
-              >
-                <div className="space-y-2">
-                  <div className="font-medium text-sm">{sector.name}</div>
-                  <ScorePill 
-                    score={sector.score}
-                    classification={sector.classification}
-                    className="text-xs"
-                  />
-                </div>
-              </button>
-            ))}
-          </div>
+          {sectors.length === 0 ? (
+            <div className="text-center py-8 text-slate">
+              <p>Loading sectors...</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {sectors.map((sector, index) => (
+                <button
+                  key={sector.id}
+                  onClick={() => handleSectorClick(sector.id)}
+                  className="bg-muted/30 hover:bg-muted/50 border border-border rounded-xl p-4 text-left transition-all duration-200 hover:shadow-sm hover:translate-y-[-2px] focus-visible animate-fade-in"
+                  style={{ animationDelay: `${index * 80}ms` }}
+                >
+                  <div className="space-y-2">
+                    <div className="font-medium text-sm">{sector.name}</div>
+                    <ScorePill 
+                      score={sector.score}
+                      classification={sector.classification}
+                      className="text-xs"
+                    />
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>

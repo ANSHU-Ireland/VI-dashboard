@@ -1,0 +1,13 @@
+{
+  "sub_industry": "Software & Services",
+  "time_series": [
+    { "year": 2010, "score": 55 },
+    { "year": 2012, "score": 52 },
+    { "year": 2014, "score": 48 },
+    { "year": 2016, "score": 45 },
+    { "year": 2018, "score": 42 },
+    { "year": 2020, "score": 40 },
+    { "year": 2022, "score": 39 },
+    { "year": 2024, "score": 39 }
+  ]
+}

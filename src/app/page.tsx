@@ -3,10 +3,12 @@ import { SystemDashboard } from "@/components/system-dashboard";
 import { SubIndustryDashboard } from "@/components/sub-industry-dashboard";
 import { ViabilityLegend } from "@/components/viability-legend";
 import { CallsToAction } from "@/components/calls-to-action";
+import { SectorProvider } from "@/contexts/sector-context";
 
 export default function HomePage() {
   return (
-    <div className="container mx-auto px-4 py-8 space-y-12">
+    <SectorProvider>
+      <div className="container mx-auto px-4 py-8 space-y-12">
       {/* Hero + Countdown Banner */}
       <section className="text-center space-y-6">
         <div className="space-y-4">
@@ -47,5 +49,6 @@ export default function HomePage() {
       {/* Calls to Action */}
       <CallsToAction />
     </div>
+    </SectorProvider>
   );
 }

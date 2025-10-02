@@ -5,6 +5,7 @@ import { ProgressBarText } from "./progress-bar-text";
 import { ScorePill } from "./score-pill";
 import { RatingStars } from "./rating-stars";
 import { VerificationIndicator } from "./verify-badges";
+import { useSector, getDefaultSubIndustryForSector } from "@/contexts/sector-context";
 import { getSystemProgress, getSystemScores, getSectors, type SystemProgress, type SystemScores, type Sector } from "@/lib/api";
 
 export function SystemDashboard() {
@@ -12,6 +13,8 @@ export function SystemDashboard() {
   const [scores, setScores] = useState<SystemScores | null>(null);
   const [sectors, setSectors] = useState<Sector[]>([]);
   const [loading, setLoading] = useState(true);
+  
+  const { setSelectedSectorId, setSelectedSubIndustryId } = useSector();
 
   useEffect(() => {
     async function fetchData() {
@@ -35,6 +38,13 @@ export function SystemDashboard() {
   }, []);
 
   const handleSectorClick = (sectorId: string) => {
+    // Set the selected sector in context
+    setSelectedSectorId(sectorId);
+    
+    // Get the default sub-industry for this sector
+    const defaultSubIndustry = getDefaultSubIndustryForSector(sectorId);
+    setSelectedSubIndustryId(defaultSubIndustry);
+    
     // Smooth scroll to sub-industry dashboard
     const element = document.getElementById("sub-industry-dashboard");
     if (element) {

@@ -7,6 +7,7 @@ import { ScorePill } from "./score-pill";
 import { RatingStars } from "./rating-stars";
 import { VerifyBadges, VerificationIndicator } from "./verify-badges";
 import { TimeseriesChart } from "./timeseries-chart";
+import { useSector, sectorToSubIndustryMap } from "@/contexts/sector-context";
 import { 
   getSubIndustryProgress, 
   getSubIndustryScores, 
@@ -17,31 +18,74 @@ import {
 } from "@/lib/api";
 
 export function SubIndustryDashboard() {
-  const [currentId, setCurrentId] = useState("coal");
+  const { selectedSectorId, selectedSubIndustryId, setSelectedSubIndustryId } = useSector();
   const [progress, setProgress] = useState<SubIndustryProgress | null>(null);
   const [scores, setScores] = useState<SubIndustryScores | null>(null);
   const [timeSeries, setTimeSeries] = useState<TimeSeriesData | null>(null);
   const [loading, setLoading] = useState(true);
   const [showMethodology, setShowMethodology] = useState(false);
 
-  const subIndustries = [
-    { id: "coal", name: "Coal & Consumable Fuels" },
-    { id: "ogx", name: "Oil & Gas Exploration" },
-    { id: "utilities", name: "Electric Utilities" },
-    { id: "renewable", name: "Renewable Energy" },
-  ];
+  // Get sub-industries for the current sector, fallback to energy if no sector selected
+  const currentSectorId = selectedSectorId || "energy";
+  const availableSubIndustries = sectorToSubIndustryMap[currentSectorId] || ["coal", "ogx", "utilities", "renewable"];
+  
+  // Create sub-industry objects with better names
+  const subIndustryNames: Record<string, string> = {
+    coal: "Coal & Consumable Fuels",
+    ogx: "Oil & Gas Exploration", 
+    utilities: "Electric Utilities",
+    renewable: "Renewable Energy",
+    cotton: "Cotton & Natural Fibers",
+    synthetic: "Synthetic Materials",
+    wool: "Wool & Animal Fibers",
+    pharma: "Pharmaceuticals",
+    "medical-devices": "Medical Devices",
+    hospitals: "Hospital Systems",
+    banking: "Banking & Credit",
+    insurance: "Insurance Services", 
+    fintech: "Financial Technology",
+    software: "Software & Services",
+    hardware: "Hardware & Electronics",
+    ai: "Artificial Intelligence",
+    crops: "Crop Production",
+    livestock: "Livestock & Dairy",
+    organic: "Organic & Sustainable"
+  };
 
-  const currentIndex = subIndustries.findIndex(s => s.id === currentId);
+  const subIndustries = availableSubIndustries.map(id => ({
+    id,
+    name: subIndustryNames[id] || id.charAt(0).toUpperCase() + id.slice(1)
+  }));
+
+  const currentIndex = subIndustries.findIndex(s => s.id === selectedSubIndustryId);
   const currentName = subIndustries[currentIndex]?.name || "Coal & Consumable Fuels";
+
+  // Get sector name for display
+  const sectorNames: Record<string, string> = {
+    energy: "Energy",
+    textiles: "Textiles", 
+    healthcare: "Healthcare",
+    financials: "Financials",
+    technology: "Technology",
+    agriculture: "Agriculture"
+  };
+  const currentSectorName = sectorNames[currentSectorId] || "Energy";
+
+  // Ensure the selected sub-industry is valid for the current sector
+  useEffect(() => {
+    if (!availableSubIndustries.includes(selectedSubIndustryId)) {
+      setSelectedSubIndustryId(availableSubIndustries[0]);
+    }
+  }, [selectedSectorId, selectedSubIndustryId, setSelectedSubIndustryId, availableSubIndustries]);
 
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
       try {
         const [progressData, scoresData, timeSeriesData] = await Promise.all([
-          getSubIndustryProgress(currentId),
-          getSubIndustryScores(currentId),
-          getSubIndustryTimeSeries(currentId),
+          getSubIndustryProgress(selectedSubIndustryId),
+          getSubIndustryScores(selectedSubIndustryId),
+          getSubIndustryTimeSeries(selectedSubIndustryId),
         ]);
         setProgress(progressData);
         setScores(scoresData);
@@ -53,13 +97,13 @@ export function SubIndustryDashboard() {
       }
     }
     fetchData();
-  }, [currentId]);
+  }, [selectedSubIndustryId]);
 
   const navigateSubIndustry = (direction: "prev" | "next") => {
     const newIndex = direction === "prev" 
       ? Math.max(0, currentIndex - 1)
       : Math.min(subIndustries.length - 1, currentIndex + 1);
-    setCurrentId(subIndustries[newIndex].id);
+    setSelectedSubIndustryId(subIndustries[newIndex].id);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -73,7 +117,12 @@ export function SubIndustryDashboard() {
   return (
     <section id="sub-industry-dashboard" className="space-y-8" tabIndex={-1}>
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold">Sub-Industry Dashboard</h2>
+        <div>
+          <h2 className="text-2xl font-bold">Sub-Industry Dashboard</h2>
+          <p className="text-sm text-slate mt-1">
+            Sector: <span className="font-medium text-foreground">{currentSectorName}</span>
+          </p>
+        </div>
         
         {/* Navigation */}
         <div 

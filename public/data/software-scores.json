@@ -1,0 +1,77 @@
+{
+  "sub_industry": "Software & Services",
+  "dimensions": [
+    {
+      "name": "Infrastructure",
+      "score": 35,
+      "classification": "Medium/High",
+      "coverage": 92,
+      "confidence": 0.88,
+      "human_check": true,
+      "expert_check": true,
+      "rating": 5
+    },
+    {
+      "name": "Necessity",
+      "score": 28,
+      "classification": "High Viability",
+      "coverage": 95,
+      "confidence": 0.92,
+      "human_check": true,
+      "expert_check": true,
+      "rating": 5
+    },
+    {
+      "name": "Resource",
+      "score": 32,
+      "classification": "Medium/High",
+      "coverage": 88,
+      "confidence": 0.85,
+      "human_check": true,
+      "expert_check": true,
+      "rating": 4
+    },
+    {
+      "name": "Artificial Support",
+      "score": 45,
+      "classification": "Medium",
+      "coverage": 85,
+      "confidence": 0.80,
+      "human_check": true,
+      "expert_check": false,
+      "rating": 4
+    },
+    {
+      "name": "Ecological",
+      "score": 58,
+      "classification": "Medium",
+      "coverage": 70,
+      "confidence": 0.75,
+      "human_check": false,
+      "expert_check": false,
+      "rating": 3
+    },
+    {
+      "name": "Economic",
+      "score": 25,
+      "classification": "High Viability",
+      "coverage": 98,
+      "confidence": 0.95,
+      "human_check": true,
+      "expert_check": true,
+      "rating": 5
+    },
+    {
+      "name": "Emissions",
+      "score": 48,
+      "classification": "Medium",
+      "coverage": 82,
+      "confidence": 0.78,
+      "human_check": true,
+      "expert_check": true,
+      "rating": 4
+    }
+  ],
+  "composite_score": 39,
+  "classification": "Medium/High"
+}

@@ -1,0 +1,77 @@
+{
+  "sub_industry": "Cotton & Natural Fibers",
+  "dimensions": [
+    {
+      "name": "Infrastructure",
+      "score": 42,
+      "classification": "Medium",
+      "coverage": 75,
+      "confidence": 0.68,
+      "human_check": true,
+      "expert_check": false,
+      "rating": 3
+    },
+    {
+      "name": "Necessity",
+      "score": 65,
+      "classification": "Low Viability",
+      "coverage": 80,
+      "confidence": 0.75,
+      "human_check": true,
+      "expert_check": true,
+      "rating": 4
+    },
+    {
+      "name": "Resource",
+      "score": 73,
+      "classification": "Low Viability",
+      "coverage": 85,
+      "confidence": 0.82,
+      "human_check": true,
+      "expert_check": true,
+      "rating": 5
+    },
+    {
+      "name": "Artificial Support",
+      "score": 58,
+      "classification": "Medium",
+      "coverage": 70,
+      "confidence": 0.65,
+      "human_check": false,
+      "expert_check": false,
+      "rating": 3
+    },
+    {
+      "name": "Ecological",
+      "score": 78,
+      "classification": "Low Viability",
+      "coverage": 90,
+      "confidence": 0.85,
+      "human_check": true,
+      "expert_check": true,
+      "rating": 5
+    },
+    {
+      "name": "Economic",
+      "score": 51,
+      "classification": "Medium",
+      "coverage": 72,
+      "confidence": 0.70,
+      "human_check": true,
+      "expert_check": false,
+      "rating": 3
+    },
+    {
+      "name": "Emissions",
+      "score": 69,
+      "classification": "Low Viability",
+      "coverage": 88,
+      "confidence": 0.83,
+      "human_check": true,
+      "expert_check": true,
+      "rating": 4
+    }
+  ],
+  "composite_score": 62,
+  "classification": "Low Viability"
+}

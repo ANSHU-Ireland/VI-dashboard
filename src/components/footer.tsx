@@ -28,11 +28,6 @@ export function Footer() {
               </li>
               <li>
                 <Link href="#" className="hover:text-cobalt-600 transition-colors">
-                  FVI
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-cobalt-600 transition-colors">
                   Darwin & Goliath
                 </Link>
               </li>

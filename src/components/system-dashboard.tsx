@@ -93,65 +93,163 @@ export function SystemDashboard() {
         </div>
 
         {/* Aggregated Scores */}
-        <div className="bg-card border border-border rounded-2xl p-6 space-y-6">
-          <h3 className="text-xl font-semibold">Aggregated Scores (All Industries)</h3>
+        <div className="lg:col-span-2 bg-card border border-border rounded-2xl p-6 space-y-6">
+          <h3 className="text-xl font-semibold">📊 Aggregated Scores (All Industries)</h3>
           
-          {scores && (
-            <>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b border-border">
-                      <th className="text-left py-2 font-medium">Dimension</th>
-                      <th className="text-left py-2 font-medium">Score</th>
-                      <th className="text-left py-2 font-medium">Coverage</th>
-                      <th className="text-left py-2 font-medium">Verify</th>
-                      <th className="text-left py-2 font-medium">Rating</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {scores.dimensions.map((dimension, index) => (
-                      <tr 
-                        key={dimension.name} 
-                        className="border-b border-border/50 animate-fade-in"
-                        style={{ animationDelay: `${index * 40}ms` }}
-                      >
-                        <td className="py-3 font-medium">{dimension.name}</td>
-                        <td className="py-3">
-                          <ScorePill 
-                            score={dimension.score} 
-                            classification={dimension.classification} 
-                          />
-                        </td>
-                        <td className="py-3 text-slate">
-                          {Math.round(dimension.coverage * 100)}%
-                        </td>
-                        <td className="py-3">
-                          <VerifyBadges 
-                            humanCheck={dimension.human_check}
-                            expertCheck={dimension.expert_check}
-                          />
-                        </td>
-                        <td className="py-3">
-                          <RatingStars rating={dimension.rating} />
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              
-              <div className="pt-4 border-t border-border">
-                <div className="flex items-center justify-between">
-                  <span className="font-medium">Composite Global FVI Score:</span>
-                  <ScorePill 
-                    score={scores.composite_global_score}
-                    classification={scores.composite_classification}
-                  />
-                </div>
-              </div>
-            </>
-          )}
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 font-medium">Dimension</th>
+                  <th className="text-left py-2 font-medium">Avg Score</th>
+                  <th className="text-left py-2 font-medium">Classification</th>
+                  <th className="text-left py-2 font-medium">Coverage</th>
+                  <th className="text-left py-2 font-medium">Confidence</th>
+                  <th className="text-left py-2 font-medium">Human ✅</th>
+                  <th className="text-left py-2 font-medium">Expert 🧠</th>
+                  <th className="text-left py-2 font-medium">Rating</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-border/50 animate-fade-in">
+                  <td className="py-3 font-medium">Infrastructure</td>
+                  <td className="py-3">
+                    <ScorePill score={58} classification="Medium" />
+                  </td>
+                  <td className="py-3">Medium</td>
+                  <td className="py-3">80%</td>
+                  <td className="py-3">0.72</td>
+                  <td className="py-3">
+                    <VerifyBadges humanCheck={true} expertCheck={false} />
+                  </td>
+                  <td className="py-3">
+                    <VerifyBadges humanCheck={false} expertCheck={true} />
+                  </td>
+                  <td className="py-3">
+                    <RatingStars rating={4} />
+                  </td>
+                </tr>
+                <tr className="border-b border-border/50 animate-fade-in" style={{animationDelay: '40ms'}}>
+                  <td className="py-3 font-medium">Necessity</td>
+                  <td className="py-3">
+                    <ScorePill score={53} classification="Medium" />
+                  </td>
+                  <td className="py-3">Medium</td>
+                  <td className="py-3">75%</td>
+                  <td className="py-3">0.70</td>
+                  <td className="py-3">
+                    <VerifyBadges humanCheck={true} expertCheck={false} />
+                  </td>
+                  <td className="py-3">
+                    <VerifyBadges humanCheck={false} expertCheck={false} />
+                  </td>
+                  <td className="py-3">
+                    <RatingStars rating={3} />
+                  </td>
+                </tr>
+                <tr className="border-b border-border/50 animate-fade-in" style={{animationDelay: '80ms'}}>
+                  <td className="py-3 font-medium">Resource</td>
+                  <td className="py-3">
+                    <ScorePill score={46} classification="Medium/High" />
+                  </td>
+                  <td className="py-3">Medium/High</td>
+                  <td className="py-3">68%</td>
+                  <td className="py-3">0.65</td>
+                  <td className="py-3">
+                    <VerifyBadges humanCheck={false} expertCheck={false} />
+                  </td>
+                  <td className="py-3">
+                    <VerifyBadges humanCheck={false} expertCheck={false} />
+                  </td>
+                  <td className="py-3">
+                    <RatingStars rating={2} />
+                  </td>
+                </tr>
+                <tr className="border-b border-border/50 animate-fade-in" style={{animationDelay: '120ms'}}>
+                  <td className="py-3 font-medium">Artificial Support</td>
+                  <td className="py-3">
+                    <ScorePill score={64} classification="Low Viability" />
+                  </td>
+                  <td className="py-3">Low Viability</td>
+                  <td className="py-3">82%</td>
+                  <td className="py-3">0.78</td>
+                  <td className="py-3">
+                    <VerifyBadges humanCheck={true} expertCheck={false} />
+                  </td>
+                  <td className="py-3">
+                    <VerifyBadges humanCheck={false} expertCheck={true} />
+                  </td>
+                  <td className="py-3">
+                    <RatingStars rating={4} />
+                  </td>
+                </tr>
+                <tr className="border-b border-border/50 animate-fade-in" style={{animationDelay: '160ms'}}>
+                  <td className="py-3 font-medium">Ecological</td>
+                  <td className="py-3">
+                    <ScorePill score={79} classification="Low Viability" />
+                  </td>
+                  <td className="py-3">Low Viability</td>
+                  <td className="py-3">90%</td>
+                  <td className="py-3">0.85</td>
+                  <td className="py-3">
+                    <VerifyBadges humanCheck={true} expertCheck={false} />
+                  </td>
+                  <td className="py-3">
+                    <VerifyBadges humanCheck={false} expertCheck={true} />
+                  </td>
+                  <td className="py-3">
+                    <RatingStars rating={5} />
+                  </td>
+                </tr>
+                <tr className="border-b border-border/50 animate-fade-in" style={{animationDelay: '200ms'}}>
+                  <td className="py-3 font-medium">Economic</td>
+                  <td className="py-3">
+                    <ScorePill score={55} classification="Medium" />
+                  </td>
+                  <td className="py-3">Medium</td>
+                  <td className="py-3">72%</td>
+                  <td className="py-3">0.66</td>
+                  <td className="py-3">
+                    <VerifyBadges humanCheck={true} expertCheck={false} />
+                  </td>
+                  <td className="py-3">
+                    <VerifyBadges humanCheck={false} expertCheck={false} />
+                  </td>
+                  <td className="py-3">
+                    <RatingStars rating={3} />
+                  </td>
+                </tr>
+                <tr className="border-b border-border/50 animate-fade-in" style={{animationDelay: '240ms'}}>
+                  <td className="py-3 font-medium">Emissions</td>
+                  <td className="py-3">
+                    <ScorePill score={82} classification="Low Viability" />
+                  </td>
+                  <td className="py-3">Low Viability</td>
+                  <td className="py-3">95%</td>
+                  <td className="py-3">0.88</td>
+                  <td className="py-3">
+                    <VerifyBadges humanCheck={true} expertCheck={false} />
+                  </td>
+                  <td className="py-3">
+                    <VerifyBadges humanCheck={false} expertCheck={true} />
+                  </td>
+                  <td className="py-3">
+                    <RatingStars rating={4} />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div className="pt-4 border-t border-border">
+            <div className="flex items-center justify-between">
+              <span className="font-medium">Composite Global FVI Score:</span>
+              <ScorePill 
+                score={63}
+                classification="Low Viability"
+              />
+            </div>
+          </div>
         </div>
 
         {/* Sector Snapshot */}

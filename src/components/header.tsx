@@ -25,13 +25,6 @@ export function Header() {
             <span className="font-bold text-lg">FVI</span>
           </Link>
 
-          {/* Domain Badge */}
-          <div className="hidden md:flex items-center space-x-1 bg-muted px-3 py-1 rounded-xl text-sm">
-            <span className="opacity-60">FutureViability.org</span>
-            <span className="opacity-40">|</span>
-            <span className="opacity-60">FutureViability.com</span>
-          </div>
-
           {/* Navigation */}
           <nav className="flex items-center space-x-6">
             <div className="hidden md:flex items-center space-x-6">

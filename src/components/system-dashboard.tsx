@@ -69,32 +69,37 @@ export function SystemDashboard() {
     <section className="space-y-8">
       <h2 className="text-2xl font-bold">📊 System Dashboard</h2>
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Overall System Progress */}
-        <div className="bg-card border border-border rounded-2xl p-6 space-y-6">
-          <h3 className="text-xl font-semibold">Overall System Progress</h3>
-          
-          {progress && (
-            <div className="space-y-4">
-              <ProgressBarText 
-                value={progress.sub_industries_completed}
-                max={progress.total_sub_industries}
-                label="Sub-Industries Completed"
-              />
-              <ProgressBarText 
-                value={progress.metrics_completed_pct}
-                label="Metrics Completed"
-              />
-              <ProgressBarText 
-                value={progress.global_coverage_pct}
-                label="Global Coverage (peer-reviewed)"
-              />
-            </div>
-          )}
+      <div className="space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Overall System Progress */}
+          <div className="bg-card border border-border rounded-2xl p-6 space-y-6">
+            <h3 className="text-xl font-semibold">Overall System Progress</h3>
+            
+            {progress && (
+              <div className="space-y-4">
+                <ProgressBarText 
+                  value={progress.sub_industries_completed}
+                  max={progress.total_sub_industries}
+                  label="Sub-Industries Completed"
+                />
+                <ProgressBarText 
+                  value={progress.metrics_completed_pct}
+                  label="Metrics Completed"
+                />
+                <ProgressBarText 
+                  value={progress.global_coverage_pct}
+                  label="Global Coverage (peer-reviewed)"
+                />
+              </div>
+            )}
+          </div>
+
+          {/* Placeholder for layout */}
+          <div></div>
         </div>
 
         {/* Aggregated Scores */}
-        <div className="lg:col-span-2 bg-card border border-border rounded-2xl p-6 space-y-6">
+        <div className="bg-card border border-border rounded-2xl p-6 space-y-6">
           <h3 className="text-xl font-semibold">📊 Aggregated Scores (All Industries)</h3>
           
           <div className="overflow-x-auto">
@@ -254,34 +259,28 @@ export function SystemDashboard() {
         </div>
 
         {/* Sector Snapshot */}
-        <div className="lg:col-span-2 bg-card border border-border rounded-2xl p-6 space-y-6">
+        <div className="bg-card border border-border rounded-2xl p-6 space-y-6">
           <h3 className="text-xl font-semibold">Sector Snapshot</h3>
           
-          {sectors.length === 0 ? (
-            <div className="text-center py-8 text-slate">
-              <p>Loading sectors...</p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {sectors.map((sector, index) => (
-                <button
-                  key={sector.id}
-                  onClick={() => handleSectorClick(sector.id)}
-                  className="bg-muted/30 hover:bg-muted/50 border border-border rounded-xl p-4 text-left transition-all duration-200 hover:shadow-sm hover:translate-y-[-2px] focus-visible animate-fade-in"
-                  style={{ animationDelay: `${index * 80}ms` }}
-                >
-                  <div className="space-y-2">
-                    <div className="font-medium text-sm">{sector.name}</div>
-                    <ScorePill 
-                      score={sector.score}
-                      classification={sector.classification}
-                      className="text-xs"
-                    />
-                  </div>
-                </button>
-              ))}
-            </div>
-          )}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {sectors.map((sector, index) => (
+              <button
+                key={sector.id}
+                onClick={() => handleSectorClick(sector.id)}
+                className="bg-muted/30 hover:bg-muted/50 border border-border rounded-xl p-4 text-left transition-all duration-200 hover:shadow-sm hover:translate-y-[-2px] focus-visible animate-fade-in"
+                style={{ animationDelay: `${index * 80}ms` }}
+              >
+                <div className="space-y-2">
+                  <div className="font-medium text-sm">{sector.name}</div>
+                  <ScorePill 
+                    score={sector.score}
+                    classification={sector.classification}
+                    className="text-xs"
+                  />
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </section>

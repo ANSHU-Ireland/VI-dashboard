@@ -1,4 +1,4 @@
-import { Check, Brain } from "lucide-react";
+import { Check, X, Brain } from "lucide-react";
 
 interface VerifyBadgesProps {
   humanCheck: boolean;
@@ -30,6 +30,32 @@ export function VerifyBadges({ humanCheck, expertCheck, className = "" }: Verify
       >
         <Brain className="w-3 h-3" />
         <span>Expert</span>
+      </div>
+    </div>
+  );
+}
+
+// Simple verification indicator for table cells
+interface VerificationIndicatorProps {
+  verified: boolean;
+  type: 'human' | 'expert';
+}
+
+export function VerificationIndicator({ verified, type }: VerificationIndicatorProps) {
+  if (verified) {
+    return (
+      <div className="flex items-center justify-center">
+        <div className="w-6 h-6 rounded-full bg-moss-600 flex items-center justify-center">
+          <Check className="w-4 h-4 text-white" />
+        </div>
+      </div>
+    );
+  }
+  
+  return (
+    <div className="flex items-center justify-center">
+      <div className="w-6 h-6 rounded-full bg-slate/20 flex items-center justify-center">
+        <X className="w-4 h-4 text-slate" />
       </div>
     </div>
   );

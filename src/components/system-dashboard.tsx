@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { ProgressBarText } from "./progress-bar-text";
 import { ScorePill } from "./score-pill";
 import { RatingStars } from "./rating-stars";
-import { VerifyBadges } from "./verify-badges";
+import { VerificationIndicator } from "./verify-badges";
 import { getSystemProgress, getSystemScores, getSectors, type SystemProgress, type SystemScores, type Sector } from "@/lib/api";
 
 export function SystemDashboard() {
@@ -138,10 +138,10 @@ export function SystemDashboard() {
                   <td className="py-3">75%</td>
                   <td className="py-3">0.70</td>
                   <td className="py-3">
-                    <VerifyBadges humanCheck={true} expertCheck={false} />
+                    <VerificationIndicator verified={true} type="human" />
                   </td>
                   <td className="py-3">
-                    <VerifyBadges humanCheck={false} expertCheck={false} />
+                    <VerificationIndicator verified={false} type="expert" />
                   </td>
                   <td className="py-3">
                     <RatingStars rating={3} />
@@ -156,10 +156,10 @@ export function SystemDashboard() {
                   <td className="py-3">68%</td>
                   <td className="py-3">0.65</td>
                   <td className="py-3">
-                    <VerifyBadges humanCheck={false} expertCheck={false} />
+                    <VerificationIndicator verified={false} type="human" />
                   </td>
                   <td className="py-3">
-                    <VerifyBadges humanCheck={false} expertCheck={false} />
+                    <VerificationIndicator verified={false} type="expert" />
                   </td>
                   <td className="py-3">
                     <RatingStars rating={2} />
@@ -174,10 +174,10 @@ export function SystemDashboard() {
                   <td className="py-3">82%</td>
                   <td className="py-3">0.78</td>
                   <td className="py-3">
-                    <VerifyBadges humanCheck={true} expertCheck={false} />
+                    <VerificationIndicator verified={true} type="human" />
                   </td>
                   <td className="py-3">
-                    <VerifyBadges humanCheck={false} expertCheck={true} />
+                    <VerificationIndicator verified={true} type="expert" />
                   </td>
                   <td className="py-3">
                     <RatingStars rating={4} />
@@ -192,10 +192,10 @@ export function SystemDashboard() {
                   <td className="py-3">90%</td>
                   <td className="py-3">0.85</td>
                   <td className="py-3">
-                    <VerifyBadges humanCheck={true} expertCheck={false} />
+                    <VerificationIndicator verified={true} type="human" />
                   </td>
                   <td className="py-3">
-                    <VerifyBadges humanCheck={false} expertCheck={true} />
+                    <VerificationIndicator verified={true} type="expert" />
                   </td>
                   <td className="py-3">
                     <RatingStars rating={5} />
@@ -210,10 +210,10 @@ export function SystemDashboard() {
                   <td className="py-3">72%</td>
                   <td className="py-3">0.66</td>
                   <td className="py-3">
-                    <VerifyBadges humanCheck={true} expertCheck={false} />
+                    <VerificationIndicator verified={true} type="human" />
                   </td>
                   <td className="py-3">
-                    <VerifyBadges humanCheck={false} expertCheck={false} />
+                    <VerificationIndicator verified={false} type="expert" />
                   </td>
                   <td className="py-3">
                     <RatingStars rating={3} />
@@ -228,10 +228,10 @@ export function SystemDashboard() {
                   <td className="py-3">95%</td>
                   <td className="py-3">0.88</td>
                   <td className="py-3">
-                    <VerifyBadges humanCheck={true} expertCheck={false} />
+                    <VerificationIndicator verified={true} type="human" />
                   </td>
                   <td className="py-3">
-                    <VerifyBadges humanCheck={false} expertCheck={true} />
+                    <VerificationIndicator verified={true} type="expert" />
                   </td>
                   <td className="py-3">
                     <RatingStars rating={4} />

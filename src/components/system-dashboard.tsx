@@ -83,7 +83,7 @@ export function SystemDashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Overall System Progress */}
           <div className="data-card p-6 space-y-6">
-            <h3 className="text-xl font-mono font-light text-grey-700">SYSTEM PROGRESS INDICATORS</h3>
+            <h3 className="text-xl font-mono font-light text-muted-foreground">SYSTEM PROGRESS INDICATORS</h3>
             
             {progress && (
               <div className="space-y-4">
@@ -110,20 +110,20 @@ export function SystemDashboard() {
 
         {/* Aggregated Scores */}
         <div className="data-card p-6 space-y-6">
-          <h3 className="text-xl font-mono font-light text-grey-700">AGGREGATED MEASUREMENT DATA</h3>
+          <h3 className="text-xl font-mono font-light text-muted-foreground">AGGREGATED MEASUREMENT DATA</h3>
           
           <div className="overflow-x-auto">
             <table className="data-grid w-full text-sm font-mono">
               <thead>
                 <tr className="border-b border-grey-300">
-                  <th className="text-left py-3 font-normal text-grey-700">DIMENSION</th>
-                  <th className="text-left py-3 font-normal text-grey-700">VALUE</th>
-                  <th className="text-left py-3 font-normal text-grey-700">CLASSIFICATION</th>
-                  <th className="text-left py-3 font-normal text-grey-700">COVERAGE</th>
-                  <th className="text-left py-3 font-normal text-grey-700">CONFIDENCE</th>
-                  <th className="text-left py-3 font-normal text-grey-700">HUMAN</th>
-                  <th className="text-left py-3 font-normal text-grey-700">EXPERT</th>
-                  <th className="text-left py-3 font-normal text-grey-700">RATING</th>
+                  <th className="text-left py-3 font-normal text-muted-foreground">DIMENSION</th>
+                  <th className="text-left py-3 font-normal text-muted-foreground">VALUE</th>
+                  <th className="text-left py-3 font-normal text-muted-foreground">CLASSIFICATION</th>
+                  <th className="text-left py-3 font-normal text-muted-foreground">COVERAGE</th>
+                  <th className="text-left py-3 font-normal text-muted-foreground">CONFIDENCE</th>
+                  <th className="text-left py-3 font-normal text-muted-foreground">HUMAN</th>
+                  <th className="text-left py-3 font-normal text-muted-foreground">EXPERT</th>
+                  <th className="text-left py-3 font-normal text-muted-foreground">RATING</th>
                 </tr>
               </thead>
               <tbody>
@@ -270,7 +270,7 @@ export function SystemDashboard() {
 
         {/* Sector Snapshot */}
         <div className="data-card p-6 space-y-6">
-          <h3 className="text-xl font-mono font-light text-grey-700">SECTOR MEASUREMENT GRID</h3>
+          <h3 className="text-xl font-mono font-light text-muted-foreground">SECTOR MEASUREMENT GRID</h3>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {sectors.map((sector, index) => (
@@ -281,7 +281,7 @@ export function SystemDashboard() {
                 style={{ animationDelay: `${index * 80}ms` }}
               >
                 <div className="space-y-2">
-                  <div className="font-normal text-sm text-measurement text-grey-700">{sector.name.toUpperCase()}</div>
+                  <div className="font-normal text-sm text-measurement text-muted-foreground">{sector.name.toUpperCase()}</div>
                   <ScorePill 
                     score={sector.score}
                     classification={sector.classification}

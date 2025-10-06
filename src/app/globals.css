@@ -39,21 +39,31 @@
 
 .dark {
   /* Inverted empirical system for dark analysis mode */
-  --background: var(--truth);
-  --foreground: var(--void);
+  --truth: #FFFFFF;        /* Inverted: White becomes truth in dark */
+  --void: #000000;         /* Inverted: Black becomes void in dark */
+  
+  --background: var(--void);
+  --foreground: var(--truth);
   --card: var(--grey-900);
   --border: var(--grey-700);
   --muted: var(--grey-800);
   --muted-foreground: var(--grey-400);
+  
+  /* Data States for Dark Mode */
+  --verified: var(--truth);     /* White in dark mode */
+  --unverified: var(--grey-500);
+  --error: var(--grey-400);
 }
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: var(--border);
   }
   
   body {
-    @apply bg-white text-black font-sans;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
     /* Precision grid - measurement foundation */
     background-image: 
       linear-gradient(var(--grey-300) 1px, transparent 1px),
@@ -65,17 +75,29 @@
   }
   
   .dark body {
-    @apply bg-black text-white;
     background-image: 
       linear-gradient(var(--grey-700) 1px, transparent 1px),
       linear-gradient(90deg, var(--grey-700) 1px, transparent 1px);
   }
   
   /* Typography Hierarchy - Strict Weight System */
-  h1 { @apply text-black font-medium tracking-tight; }
-  h2 { @apply text-black font-medium; }
-  h3 { @apply text-black font-normal; }
-  h4 { @apply text-grey-700 font-normal; }
+  h1 { 
+    color: var(--foreground);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+  }
+  h2 { 
+    color: var(--foreground);
+    font-weight: 500;
+  }
+  h3 { 
+    color: var(--foreground);
+    font-weight: 400;
+  }
+  h4 { 
+    color: var(--grey-600);
+    font-weight: 400;
+  }
   
   /* Data-first typography */
   .text-measurement { 
@@ -97,9 +119,13 @@
   
   /* Measurement Components */
   .data-card {
-    background: var(--void);
+    background: var(--card);
     border: 1px solid var(--border);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+  
+  .dark .data-card {
+    box-shadow: 0 1px 2px rgba(255, 255, 255, 0.02);
   }
   
   .data-grid {
@@ -117,12 +143,12 @@
   
   /* Micro-accent States for Data Interaction */
   .hover-accent:hover {
-    background: var(--grey-100);
+    background: var(--muted);
     transition: background-color 120ms ease-out;
   }
   
   .active-measurement {
-    background: var(--grey-200);
+    background: var(--muted);
     border-color: var(--grey-500);
   }
 }

@@ -33,7 +33,7 @@ export default function HomePage() {
           <button className="bg-truth text-void px-6 py-3 border border-grey-300 hover-accent font-mono text-sm transition-colors">
             CONTRIBUTE DATA
           </button>
-          <button className="border border-grey-400 text-grey-700 px-6 py-3 hover-accent font-mono text-sm transition-colors">
+          <button className="border border-grey-400 text-muted-foreground px-6 py-3 hover-accent font-mono text-sm transition-colors">
             SYSTEM NOTIFICATIONS
           </button>
         </div>

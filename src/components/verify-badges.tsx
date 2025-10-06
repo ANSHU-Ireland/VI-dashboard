@@ -38,7 +38,7 @@ export function VerifyBadges({ humanCheck, expertCheck, className = "" }: Verify
         className={`px-2 py-1 text-xs border text-measurement ${
           humanCheck 
             ? "bg-truth text-void border-grey-300" 
-            : "bg-grey-100 text-grey-600 border-grey-300"
+            : "bg-muted text-muted-foreground border-grey-300"
         }`}
         title={humanCheck ? "Human verification confirmed" : "Human verification pending"}
       >
@@ -48,7 +48,7 @@ export function VerifyBadges({ humanCheck, expertCheck, className = "" }: Verify
         className={`px-2 py-1 text-xs border text-measurement ${
           expertCheck 
             ? "bg-truth text-void border-grey-300" 
-            : "bg-grey-100 text-grey-600 border-grey-300"
+            : "bg-muted text-muted-foreground border-grey-300"
         }`}
         title={expertCheck ? "Expert verification confirmed" : "Expert verification pending"}
       >

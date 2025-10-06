@@ -7,14 +7,14 @@ interface ScorePillProps {
 export function ScorePill({ score, classification, className = "" }: ScorePillProps) {
   // Empirical measurement visualization - truth through data
   const getScoreIntensity = (score: number) => {
-    if (score <= 40) return "text-grey-700"; // High viability - closer to truth
-    if (score <= 60) return "text-grey-600"; // Medium - operational uncertainty  
-    return "text-truth";                      // Low viability - absolute measurement
+    if (score <= 40) return "text-muted-foreground"; // High viability - operational text
+    if (score <= 60) return "text-grey-600";         // Medium - uncertainty 
+    return "text-truth";                              // Low viability - absolute measurement
   };
 
   const getMeasurementBar = (score: number) => {
     if (score <= 40) return "bg-grey-400";
-    if (score <= 60) return "bg-grey-500";
+    if (score <= 60) return "bg-grey-500"; 
     return "bg-truth";
   };
 
@@ -25,7 +25,7 @@ export function ScorePill({ score, classification, className = "" }: ScorePillPr
       </span>
       <div className="flex items-center space-x-2">
         <div className={`w-2 h-2 ${getMeasurementBar(score)}`}></div>
-        <span className="text-xs text-grey-600 text-measurement">
+        <span className="text-xs text-muted-foreground text-measurement">
           {classification.toUpperCase()}
         </span>
       </div>

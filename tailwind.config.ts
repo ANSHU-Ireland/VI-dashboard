@@ -10,9 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Core Empirical Palette
-        truth: "var(--truth)",           // #000000 - Absolute truth
-        void: "var(--void)",             // #FFFFFF - Transparency
+        // Core Empirical Palette - Theme Responsive
+        truth: "var(--truth)",           // Black in light, White in dark
+        void: "var(--void)",             // White in light, Black in dark
         
         // Analytical Grey Spectrum
         grey: {

@@ -10,25 +10,39 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "var(--ink)",
-        bone: "var(--bone)",
-        graphite: "var(--graphite)",
-        slate: "var(--slate)",
-        moss: {
-          600: "var(--moss-600)",
+        // Core Empirical Palette
+        truth: "var(--truth)",           // #000000 - Absolute truth
+        void: "var(--void)",             // #FFFFFF - Transparency
+        
+        // Analytical Grey Spectrum
+        grey: {
+          100: "var(--grey-100)",        // Lightest operational field
+          200: "var(--grey-200)",        // Interface backgrounds  
+          300: "var(--grey-300)",        // Borders, measurement lines
+          400: "var(--grey-400)",        // Inactive states
+          500: "var(--grey-500)",        // Active interfaces
+          600: "var(--grey-600)",        // Secondary text
+          700: "var(--grey-700)",        // High contrast analysis
+          800: "var(--grey-800)",        // Near-void depth
+          900: "var(--grey-900)",        // Measurement void
         },
-        amber: {
-          500: "var(--amber-500)",
-        },
-        crimson: {
-          600: "var(--crimson-600)",
-        },
-        cobalt: {
-          600: "var(--cobalt-600)",
-        },
+        
+        // System Mappings for Components
+        background: "var(--background)",
+        foreground: "var(--foreground)",
         card: "var(--card)",
-        muted: "var(--muted)",
         border: "var(--border)",
+        muted: "var(--muted)",
+        "muted-foreground": "var(--muted-foreground)",
+        
+        // Data States
+        verified: "var(--verified)",
+        unverified: "var(--unverified)",
+        error: "var(--error)",
+        
+        // Legacy compatibility (will phase out)
+        black: "#000000",
+        white: "#FFFFFF",
       },
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui"],

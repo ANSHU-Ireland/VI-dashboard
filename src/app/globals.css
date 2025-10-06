@@ -2,27 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 
+ * Empirical Design System - Truth through Measurement
+ * Core Philosophy: Precision, Objectivity, Data Integrity
+ */
+
 :root {
-  --ink: #0F172A;
-  --bone: #F8FAFC;
-  --graphite: #111827;
-  --slate: #64748B;
-  --moss-600: #16A34A;
-  --amber-500: #F59E0B;
-  --crimson-600: #DC2626;
-  --cobalt-600: #2563EB;
-  --card: #FFFFFF;
-  --border: #E5E7EB;
-  --muted: #F1F5F9;
+  /* Core Empirical Palette */
+  --truth: #000000;        /* Absolute truth, data integrity */
+  --void: #FFFFFF;         /* Transparency, verifiable openness */
+  
+  /* Analytical Grey Spectrum - Uncertainty Made Visible */
+  --grey-100: #F5F5F5;    /* Lightest operational field */
+  --grey-200: #E8E8E8;    /* Interface backgrounds */
+  --grey-300: #D8D8D8;    /* Borders, measurement lines */
+  --grey-400: #C4C4C4;    /* Inactive states */
+  --grey-500: #9C9C9C;    /* Active interfaces, uncertainty */
+  --grey-600: #6B6B6B;    /* Secondary text */
+  --grey-700: #404040;    /* High contrast analysis */
+  --grey-800: #1A1A1A;    /* Near-void depth */
+  --grey-900: #0A0A0A;    /* Measurement void */
+  
+  /* System Mappings */
+  --background: var(--void);
+  --foreground: var(--truth);
+  --card: var(--void);
+  --border: var(--grey-300);
+  --muted: var(--grey-200);
+  --muted-foreground: var(--grey-700);
+  
+  /* Data States */
+  --verified: var(--truth);     /* Absolute certainty */
+  --unverified: var(--grey-500); /* Operational uncertainty */
+  --error: var(--grey-700);     /* System boundary */
 }
 
 .dark {
-  --ink: #F8FAFC;
-  --bone: #111827;
-  --graphite: #0F172A;
-  --card: #0B1220;
-  --border: #1F2937;
-  --muted: #0F172A;
+  /* Inverted empirical system for dark analysis mode */
+  --background: var(--truth);
+  --foreground: var(--void);
+  --card: var(--grey-900);
+  --border: var(--grey-700);
+  --muted: var(--grey-800);
+  --muted-foreground: var(--grey-400);
 }
 
 @layer base {
@@ -31,16 +53,34 @@
   }
   
   body {
-    @apply bg-bone text-ink font-sans;
+    @apply bg-white text-black font-sans;
+    /* Precision grid - measurement foundation */
     background-image: 
-      radial-gradient(circle at 1px 1px, rgba(15, 23, 42, 0.15) 1px, transparent 0);
+      linear-gradient(var(--grey-300) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grey-300) 1px, transparent 1px);
     background-size: 20px 20px;
+    background-position: 0 0, 0 0;
+    /* Subtle measurement texture */
+    background-attachment: fixed;
   }
   
   .dark body {
-    @apply bg-graphite text-ink;
+    @apply bg-black text-white;
     background-image: 
-      radial-gradient(circle at 1px 1px, rgba(248, 250, 252, 0.05) 1px, transparent 0);
+      linear-gradient(var(--grey-700) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grey-700) 1px, transparent 1px);
+  }
+  
+  /* Typography Hierarchy - Strict Weight System */
+  h1 { @apply text-black font-medium tracking-tight; }
+  h2 { @apply text-black font-medium; }
+  h3 { @apply text-black font-normal; }
+  h4 { @apply text-grey-700 font-normal; }
+  
+  /* Data-first typography */
+  .text-measurement { 
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.025em;
   }
 }
 
@@ -49,8 +89,41 @@
     text-wrap: balance;
   }
   
+  /* Empirical Focus States - Minimal Data-Led Interaction */
   .focus-visible {
-    @apply outline-2 outline-offset-2 outline-cobalt-600;
+    outline: 2px solid var(--grey-500);
+    outline-offset: 2px;
+  }
+  
+  /* Measurement Components */
+  .data-card {
+    background: var(--void);
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+  
+  .data-grid {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .data-grid th,
+  .data-grid td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    font-variant-numeric: tabular-nums;
+  }
+  
+  /* Micro-accent States for Data Interaction */
+  .hover-accent:hover {
+    background: var(--grey-100);
+    transition: background-color 120ms ease-out;
+  }
+  
+  .active-measurement {
+    background: var(--grey-200);
+    border-color: var(--grey-500);
   }
 }
 

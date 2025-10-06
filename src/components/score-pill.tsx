@@ -5,25 +5,30 @@ interface ScorePillProps {
 }
 
 export function ScorePill({ score, classification, className = "" }: ScorePillProps) {
-  const getScoreColor = (score: number) => {
-    if (score <= 40) return "text-moss-600";
-    if (score <= 60) return "text-amber-500";
-    return "text-crimson-600";
+  // Empirical measurement visualization - truth through data
+  const getScoreIntensity = (score: number) => {
+    if (score <= 40) return "text-grey-700"; // High viability - closer to truth
+    if (score <= 60) return "text-grey-600"; // Medium - operational uncertainty  
+    return "text-truth";                      // Low viability - absolute measurement
   };
 
-  const getDotColor = (score: number) => {
-    if (score <= 40) return "bg-moss-600";
-    if (score <= 60) return "bg-amber-500";
-    return "bg-crimson-600";
+  const getMeasurementBar = (score: number) => {
+    if (score <= 40) return "bg-grey-400";
+    if (score <= 60) return "bg-grey-500";
+    return "bg-truth";
   };
 
   return (
-    <div className={`flex items-center space-x-2 ${className}`}>
-      <span className={`font-mono font-bold ${getScoreColor(score)}`}>
-        {score}
+    <div className={`flex items-center space-x-3 font-mono ${className}`}>
+      <span className={`font-normal text-measurement ${getScoreIntensity(score)}`}>
+        {score.toString().padStart(2, '0')}
       </span>
-      <div className={`w-2 h-2 rounded-full ${getDotColor(score)}`}></div>
-      <span className="text-sm text-slate">{classification}</span>
+      <div className="flex items-center space-x-2">
+        <div className={`w-2 h-2 ${getMeasurementBar(score)}`}></div>
+        <span className="text-xs text-grey-600 text-measurement">
+          {classification.toUpperCase()}
+        </span>
+      </div>
     </div>
   );
 }

@@ -77,13 +77,13 @@ export function SystemDashboard() {
 
   return (
     <section className="space-y-8">
-      <h2 className="text-2xl font-bold">📊 System Dashboard</h2>
+      <h2 className="text-2xl font-mono font-normal text-measurement">SYSTEM MEASUREMENT PROTOCOL</h2>
       
       <div className="space-y-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Overall System Progress */}
-          <div className="bg-card border border-border rounded-2xl p-6 space-y-6">
-            <h3 className="text-xl font-semibold">Overall System Progress</h3>
+          <div className="data-card p-6 space-y-6">
+            <h3 className="text-xl font-mono font-light text-grey-700">SYSTEM PROGRESS INDICATORS</h3>
             
             {progress && (
               <div className="space-y-4">
@@ -109,32 +109,32 @@ export function SystemDashboard() {
         </div>
 
         {/* Aggregated Scores */}
-        <div className="bg-card border border-border rounded-2xl p-6 space-y-6">
-          <h3 className="text-xl font-semibold">📊 Aggregated Scores (All Industries)</h3>
+        <div className="data-card p-6 space-y-6">
+          <h3 className="text-xl font-mono font-light text-grey-700">AGGREGATED MEASUREMENT DATA</h3>
           
           <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+            <table className="data-grid w-full text-sm font-mono">
               <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 font-medium">Dimension</th>
-                  <th className="text-left py-2 font-medium">Avg Score</th>
-                  <th className="text-left py-2 font-medium">Classification</th>
-                  <th className="text-left py-2 font-medium">Coverage</th>
-                  <th className="text-left py-2 font-medium">Confidence</th>
-                  <th className="text-left py-2 font-medium">Human ✅</th>
-                  <th className="text-left py-2 font-medium">Expert 🧠</th>
-                  <th className="text-left py-2 font-medium">Rating</th>
+                <tr className="border-b border-grey-300">
+                  <th className="text-left py-3 font-normal text-grey-700">DIMENSION</th>
+                  <th className="text-left py-3 font-normal text-grey-700">VALUE</th>
+                  <th className="text-left py-3 font-normal text-grey-700">CLASSIFICATION</th>
+                  <th className="text-left py-3 font-normal text-grey-700">COVERAGE</th>
+                  <th className="text-left py-3 font-normal text-grey-700">CONFIDENCE</th>
+                  <th className="text-left py-3 font-normal text-grey-700">HUMAN</th>
+                  <th className="text-left py-3 font-normal text-grey-700">EXPERT</th>
+                  <th className="text-left py-3 font-normal text-grey-700">RATING</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b border-border/50 animate-fade-in">
-                  <td className="py-3 font-medium">Infrastructure</td>
+                <tr className="border-b border-grey-200 hover-accent">
+                  <td className="py-3 font-normal text-measurement">INFRASTRUCTURE</td>
                   <td className="py-3">
                     <ScorePill score={58} classification="Medium" />
                   </td>
-                  <td className="py-3">Medium</td>
-                  <td className="py-3">80%</td>
-                  <td className="py-3">0.72</td>
+                  <td className="py-3 text-measurement">MEDIUM</td>
+                  <td className="py-3 text-measurement">80%</td>
+                  <td className="py-3 text-measurement">0.72</td>
                   <td className="py-3">
                     <VerificationIndicator verified={true} type="human" />
                   </td>
@@ -269,19 +269,19 @@ export function SystemDashboard() {
         </div>
 
         {/* Sector Snapshot */}
-        <div className="bg-card border border-border rounded-2xl p-6 space-y-6">
-          <h3 className="text-xl font-semibold">Sector Snapshot</h3>
+        <div className="data-card p-6 space-y-6">
+          <h3 className="text-xl font-mono font-light text-grey-700">SECTOR MEASUREMENT GRID</h3>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {sectors.map((sector, index) => (
               <button
                 key={sector.id}
                 onClick={() => handleSectorClick(sector.id)}
-                className="bg-muted/30 hover:bg-muted/50 border border-border rounded-xl p-4 text-left transition-all duration-200 hover:shadow-sm hover:translate-y-[-2px] focus-visible animate-fade-in"
+                className="bg-grey-100 hover:bg-grey-200 border border-grey-300 p-4 text-left transition-all duration-120 hover-accent focus-visible font-mono"
                 style={{ animationDelay: `${index * 80}ms` }}
               >
                 <div className="space-y-2">
-                  <div className="font-medium text-sm">{sector.name}</div>
+                  <div className="font-normal text-sm text-measurement text-grey-700">{sector.name.toUpperCase()}</div>
                   <ScorePill 
                     score={sector.score}
                     classification={sector.classification}
